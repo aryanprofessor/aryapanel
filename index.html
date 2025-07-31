@@ -1,159 +1,198 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arya SMM - Cheapest SMM Panel</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fff;
-            color: #333;
-        }header {
-        background-color: #6a0dad;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeviSMM Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
 
-    nav {
-        background-color: #5a00a3;
-        padding: 10px 0;
-        text-align: center;
-    }
+  <!-- Header -->
+  <header class="bg-violet-700 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">LeviSMM Panel</h1>
+    <p class="text-sm">Fast, reliable, and affordable SMM services</p>
+    <a href="admin.html" class="text-yellow-200 underline">Admin Login</a>
+  </header>
 
-    nav a {
-        color: white;
-        margin: 0 20px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+  <!-- Welcome -->
+  <section class="max-w-3xl mx-auto mt-6 text-center px-4">
+    <p class="text-gray-700 text-lg">
+      Welcome to <b>LeviSMM Panel</b> – your one-stop platform for boosting social media presence.
+    </p>
+  </section>
 
-    nav a:hover {
-        text-decoration: underline;
-    }
+  <main class="max-w-3xl mx-auto mt-8 px-4 space-y-8">
 
-    .hero {
-        padding: 60px 20px;
-        text-align: center;
-        background-color: #eee;
-    }
+    <!-- Order Form -->
+    <div class="bg-white shadow-lg rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-4 text-center">Order New Service</h2>
+      <form id="orderForm" class="space-y-4">
+        <div>
+          <label for="service" class="block text-sm font-medium text-gray-700">Select Service</label>
+          <select id="service" name="service" class="w-full px-3 py-2 border rounded-md">
+            <option>Loading services...</option>
+          </select>
+        </div>
 
-    .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-    }
+        <div>
+          <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+          <input type="text" id="link" name="link" placeholder="Enter post/profile link"
+            class="w-full px-3 py-2 border rounded-md" required />
+        </div>
 
-    .hero p {
-        font-size: 1.2rem;
-        color: #555;
-    }
+        <div>
+          <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
+          <input type="number" id="quantity" name="quantity" placeholder="Enter quantity"
+            class="w-full px-3 py-2 border rounded-md" required />
+        </div>
 
-    .features, .auth-section, .admin-panel {
-        padding: 40px 20px;
-        max-width: 1000px;
-        margin: auto;
-    }
-
-    .features h2, .auth-section h2, .admin-panel h2 {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .features .box {
-        background: #f9f9f9;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    form input, form button {
-        display: block;
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 10px;
-        font-size: 1rem;
-    }
-
-    form button {
-        background-color: #6a0dad;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    footer {
-        background-color: #222;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-
-</style>
-
-</head><body>
-    <header>
-        <h1>Arya SMM Panel</h1>
-        <p>Best & Cheapest SMM Panel for All Social Media Needs</p>
-    </header><nav>
-    <a href="#services">Services</a>
-    <a href="#login">Login</a>
-    <a href="#signup">Sign Up</a>
-    <a href="#admin">Admin</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="hero">
-    <h1>Grow Your Social Media Instantly</h1>
-    <p>We provide real and fast social media services for all platforms. API-ready for resellers.</p>
-</div>
-
-<section class="features" id="services">
-    <h2>Our Popular Services</h2>
-    <div class="box">✅ Instagram Followers (Real, Refill Guaranteed)</div>
-    <div class="box">✅ YouTube Views & Subscribers</div>
-    <div class="box">✅ Facebook Page Likes & Comments</div>
-    <div class="box">✅ Twitter Retweets & Likes</div>
-    <div class="box">✅ Telegram Members & Views</div>
-    <div class="box">✅ Spotify, Threads, LinkedIn and More!</div>
-</section>
-
-<section class="auth-section" id="login">
-    <h2>Login</h2>
-    <form>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button type="submit">Login</button>
-    </form>
-</section>
-
-<section class="auth-section" id="signup">
-    <h2>Sign Up</h2>
-    <form>
-        <input type="text" placeholder="Full Name">
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button type="submit">Sign Up</button>
-    </form>
-</section>
-
-<section class="admin-panel" id="admin">
-    <h2>Admin Panel (Mock)</h2>
-    <div class="box">
-        <p>Add New Service (API Supported)</p>
-        <form>
-            <input type="text" placeholder="Service Name">
-            <input type="text" placeholder="API URL">
-            <input type="number" placeholder="Rate (per 1000)">
-            <button type="submit">Add Service</button>
-        </form>
+        <button type="submit"
+          class="w-full bg-violet-600 text-white py-2 rounded-md hover:bg-violet-700 transition duration-300">
+          Place Order
+        </button>
+      </form>
+      <div id="orderResponse" class="mt-4 text-center hidden text-sm font-medium"></div>
     </div>
-</section>
 
-<footer id="contact">
-    <p>&copy; 2025 Arya SMM. All Rights Reserved. | Contact: support@aryasmm.com</p>
-</footer>
+    <!-- Add Funds Section -->
+    <div class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200 hover:shadow-2xl transition duration-300">
+      <h2 class="text-2xl font-extrabold mb-4 text-center text-violet-700">💰 Add Funds</h2>
+      <div class="mb-5 text-center">
+        <div class="p-2 bg-gray-100 rounded-lg inline-block shadow">
+          <img src="c:\Users\ar614\OneDrive\Documents\pay.jpg" alt="Scan QR to Pay"
+            class="w-40 h-40 mx-auto rounded-md border border-gray-300" />
+        </div>
+        <p class="text-sm text-gray-600 mt-3">Scan this QR code to send payment</p>
+      </div>
+      <div class="mb-4">
+        <label for="amount" class="block text-sm font-semibold text-gray-700">Enter Amount (₹)</label>
+        <input type="number" id="amount" name="amount"
+          class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-400"
+          placeholder="e.g. 500" required />
+      </div>
+      <button onclick="submitPayment()"
+        class="w-full bg-gradient-to-r from-violet-600 to-violet-800 text-white py-2 rounded-md font-semibold shadow-lg hover:shadow-xl">
+        Submit Payment
+      </button>
+      <p id="paymentMessage" class="mt-4 text-center text-sm font-medium hidden"></p>
+    </div>
 
-</body></html>
+    <!-- My Orders -->
+    <section class="bg-white shadow-lg rounded-2xl p-6 mt-10">
+      <h2 class="text-xl font-bold mb-4 text-center text-violet-700">📋 My Orders</h2>
+      <table class="w-full border-collapse border border-gray-300 text-sm">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-3 py-2">Order ID</th>
+            <th class="border border-gray-300 px-3 py-2">Service</th>
+            <th class="border border-gray-300 px-3 py-2">Quantity</th>
+            <th class="border border-gray-300 px-3 py-2">Current Status</th>
+            <th class="border border-gray-300 px-3 py-2">Refill</th>
+          </tr>
+        </thead>
+        <tbody id="ordersList"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    // Load Services
+    window.onload = function () {
+      const serviceDropdown = document.getElementById("service");
+      const services = JSON.parse(localStorage.getItem("services")) || [];
+      if (services.length > 0) {
+        serviceDropdown.innerHTML = "";
+        services.forEach(service => {
+          const option = document.createElement("option");
+          option.value = service.name;
+          option.textContent = `${service.name} - ₹${service.price}/1k`;
+          serviceDropdown.appendChild(option);
+        });
+      } else {
+        serviceDropdown.innerHTML = "<option>No services available</option>";
+      }
+      renderUserOrders();
+    };
+
+    // Place Order
+    document.getElementById("orderForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const newOrder = {
+        id: Date.now(),
+        service: document.getElementById("service").value,
+        link: document.getElementById("link").value,
+        quantity: document.getElementById("quantity").value,
+        status: "Pending"
+      };
+      orders.push(newOrder);
+      localStorage.setItem("orders", JSON.stringify(orders));
+      alert("Order Placed Successfully!");
+      renderUserOrders();
+    });
+
+    // Render Orders
+    function renderUserOrders() {
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const ordersList = document.getElementById("ordersList");
+      ordersList.innerHTML = "";
+      if (orders.length === 0) {
+        ordersList.innerHTML = `<tr><td colspan="5" class="text-center py-2">No orders found</td></tr>`;
+        return;
+      }
+      orders.forEach((order) => {
+        ordersList.innerHTML += `
+          <tr>
+            <td class="border px-3 py-2">${order.id}</td>
+            <td class="border px-3 py-2">${order.service}</td>
+            <td class="border px-3 py-2">${order.quantity}</td>
+            <td class="border px-3 py-2 font-bold ${getStatusColor(order.status)}">${order.status}</td>
+            <td class="border px-3 py-2">
+              ${order.status === "Completed"
+                ? `<button onclick="requestRefill(${order.id})" class="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700 text-xs">Refill</button>`
+                : `<span class="text-gray-400">N/A</span>`}
+            </td>
+          </tr>`;
+      });
+    }
+
+    // Status Color
+    function getStatusColor(status) {
+      if (status === "Pending") return "text-yellow-600";
+      if (status === "Processing") return "text-blue-600";
+      if (status === "Completed") return "text-green-600";
+      if (status === "Canceled") return "text-red-600";
+      return "text-gray-600";
+    }
+
+    // Refill Request
+    function requestRefill(orderId) {
+      let refills = JSON.parse(localStorage.getItem("refills")) || [];
+      refills.push({ id: Date.now(), orderId: orderId, status: "Pending" });
+      localStorage.setItem("refills", JSON.stringify(refills));
+      alert(`Refill request submitted for Order ID: ${orderId}`);
+    }
+
+    // Payment Submission
+    function submitPayment() {
+      const amount = document.getElementById("amount").value;
+      const paymentMessage = document.getElementById("paymentMessage");
+      if (!amount || amount <= 0) {
+        paymentMessage.textContent = "⚠ Please enter a valid amount.";
+        paymentMessage.className = "mt-4 text-center text-red-600";
+        paymentMessage.classList.remove("hidden");
+        return;
+      }
+      let payments = JSON.parse(localStorage.getItem("payments")) || [];
+      payments.push({ id: Date.now(), amount, status: "Pending" });
+      localStorage.setItem("payments", JSON.stringify(payments));
+      paymentMessage.textContent = `✅ Payment request submitted for ₹${amount}`;
+      paymentMessage.className = "mt-4 text-center text-green-600";
+      paymentMessage.classList.remove("hidden");
+      document.getElementById("amount").value = "";
+    }
+  </script>
+</body>
+</html>
