@@ -5,194 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LeviSMM Panel</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800">
 
   <!-- Header -->
-  <header class="bg-violet-700 text-white p-6 text-center">
-    <h1 class="text-3xl font-bold">LeviSMM Panel</h1>
-    <p class="text-sm">Fast, reliable, and affordable SMM services</p>
-    <a href="admin.html" class="text-yellow-200 underline">Admin Login</a>
+  <header class="bg-violet-800 text-white py-8 px-4 text-center shadow-lg">
+    <h1 class="text-4xl font-bold tracking-wide">LeviSMM Panel</h1>
+    <p class="text-md mt-2 opacity-90">Fast, reliable, and affordable SMM services</p>
+    <a href="admin.html" class="text-yellow-300 underline mt-3 inline-block hover:text-yellow-200 transition">Admin Login</a>
   </header>
 
-  <!-- Welcome -->
-  <section class="max-w-3xl mx-auto mt-6 text-center px-4">
-    <p class="text-gray-700 text-lg">
-      Welcome to <b>LeviSMM Panel</b> – your one-stop platform for boosting social media presence.
-    </p>
+  <!-- Welcome Section -->
+  <section class="max-w-4xl mx-auto mt-8 text-center px-4">
+    <p class="text-xl text-gray-700">Welcome to <strong class="text-violet-700">LeviSMM Panel</strong> – your one-stop platform for boosting your social media presence.</p>
   </section>
 
-  <main class="max-w-3xl mx-auto mt-8 px-4 space-y-8">
+  <main class="max-w-4xl mx-auto mt-10 px-4 space-y-12">
 
-    <!-- Order Form -->
-    <div class="bg-white shadow-lg rounded-2xl p-6">
-      <h2 class="text-xl font-bold mb-4 text-center">Order New Service</h2>
-      <form id="orderForm" class="space-y-4">
+    <!-- Wallet Balance -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-3xl font-semibold mb-4 text-center text-violet-700">💼 Wallet Balance</h2>
+      <div class="text-center text-4xl font-bold text-green-600" id="walletBalance">₹0</div>
+    </section>
+
+    <!-- Order New Service -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-3xl font-semibold mb-4 text-center text-violet-700">📦 Order New Service</h2>
+      <form id="orderForm" class="space-y-5">
         <div>
-          <label for="service" class="block text-sm font-medium text-gray-700">Select Service</label>
-          <select id="service" name="service" class="w-full px-3 py-2 border rounded-md">
+          <label for="service" class="block text-sm font-medium">Select Service</label>
+          <select id="service" name="service" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
             <option>Loading services...</option>
           </select>
         </div>
-
         <div>
-          <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
-          <input type="text" id="link" name="link" placeholder="Enter post/profile link"
-            class="w-full px-3 py-2 border rounded-md" required />
+          <label for="link" class="block text-sm font-medium">Link</label>
+          <input type="text" id="link" name="link" placeholder="Enter post/profile link" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500" required />
         </div>
-
         <div>
-          <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
-          <input type="number" id="quantity" name="quantity" placeholder="Enter quantity"
-            class="w-full px-3 py-2 border rounded-md" required />
+          <label for="quantity" class="block text-sm font-medium">Quantity</label>
+          <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500" required />
         </div>
-
-        <button type="submit"
-          class="w-full bg-violet-600 text-white py-2 rounded-md hover:bg-violet-700 transition duration-300">
-          Place Order
-        </button>
+        <button type="submit" class="w-full bg-violet-600 text-white py-2 rounded-md hover:bg-violet-700 transition">Place Order</button>
       </form>
-      <div id="orderResponse" class="mt-4 text-center hidden text-sm font-medium"></div>
-    </div>
+      <div id="orderResponse" class="mt-4 text-center text-sm font-medium hidden"></div>
+    </section>
 
-    <!-- Add Funds Section -->
-    <div class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200 hover:shadow-2xl transition duration-300">
-      <h2 class="text-2xl font-extrabold mb-4 text-center text-violet-700">💰 Add Funds</h2>
-      <div class="mb-5 text-center">
-        <div class="p-2 bg-gray-100 rounded-lg inline-block shadow">
-          <img src="c:\Users\ar614\OneDrive\Documents\pay.jpg" alt="Scan QR to Pay"
-            class="w-40 h-40 mx-auto rounded-md border border-gray-300" />
+    <!-- Add Funds -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-3xl font-semibold mb-4 text-center text-violet-700">💰 Add Funds</h2>
+      <div class="text-center mb-5">
+        <div class="inline-block bg-gray-50 p-2 rounded-md shadow">
+          <img src="c:\Users\ar614\OneDrive\Documents\pay.jpg" alt="Scan QR to Pay" class="w-40 h-40 mx-auto rounded border border-gray-300" />
         </div>
-        <p class="text-sm text-gray-600 mt-3">Scan this QR code to send payment</p>
+        <p class="c:\Users\ar614\OneDrive\Documents\pay.jpg">Scan this QR code to send payment</p>
       </div>
-      <div class="mb-4">
-        <label for="amount" class="block text-sm font-semibold text-gray-700">Enter Amount (₹)</label>
-        <input type="number" id="amount" name="amount"
-          class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-400"
-          placeholder="e.g. 500" required />
+      <div>
+        <label for="amount" class="block text-sm font-semibold">Enter Amount (₹)</label>
+        <input type="number" id="amount" name="amount" class="mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-400" placeholder="e.g. 500" required />
       </div>
-      <button onclick="submitPayment()"
-        class="w-full bg-gradient-to-r from-violet-600 to-violet-800 text-white py-2 rounded-md font-semibold shadow-lg hover:shadow-xl">
-        Submit Payment
-      </button>
+      <button onclick="submitPayment()" class="mt-4 w-full bg-gradient-to-r from-violet-600 to-violet-800 text-white py-2 rounded-md font-semibold hover:shadow-lg">Submit Payment</button>
       <p id="paymentMessage" class="mt-4 text-center text-sm font-medium hidden"></p>
-    </div>
+    </section>
 
     <!-- My Orders -->
-    <section class="bg-white shadow-lg rounded-2xl p-6 mt-10">
-      <h2 class="text-xl font-bold mb-4 text-center text-violet-700">📋 My Orders</h2>
-      <table class="w-full border-collapse border border-gray-300 text-sm">
-        <thead>
-          <tr class="bg-gray-100">
-            <th class="border border-gray-300 px-3 py-2">Order ID</th>
-            <th class="border border-gray-300 px-3 py-2">Service</th>
-            <th class="border border-gray-300 px-3 py-2">Quantity</th>
-            <th class="border border-gray-300 px-3 py-2">Current Status</th>
-            <th class="border border-gray-300 px-3 py-2">Refill</th>
-          </tr>
-        </thead>
-        <tbody id="ordersList"></tbody>
-      </table>
+    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-2xl font-bold mb-4 text-center text-violet-700">📋 My Orders</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-gray-300">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border px-3 py-2">Order ID</th>
+              <th class="border px-3 py-2">Service</th>
+              <th class="border px-3 py-2">Quantity</th>
+              <th class="border px-3 py-2">Status</th>
+              <th class="border px-3 py-2">Refill</th>
+            </tr>
+          </thead>
+          <tbody id="ordersList"></tbody>
+        </table>
+      </div>
     </section>
+
+    <!-- Meet the Team -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-2xl font-bold mb-6 text-center text-violet-700">👥 Meet the Team</h2>
+      <div class="flex flex-wrap gap-8 justify-center">
+        <div class="w-40 text-center">
+          <img src="c:\Users\ar614\OneDrive\Documents\WhatsApp Image 2025-07-31 at 16.27.01_c60e39ea.jpg" alt="Founder" class="rounded-full w-24 h-24 mx-auto mb-2 border-4 border-violet-600" />
+          <p class="text-lg font-semibold">ravindra</p>
+          <p class="text-xs text-gray-500">Co Founder</p>
+        </div>
+        <div class="w-40 text-center">
+          <img src="c:\Users\ar614\OneDrive\Documents\WhatsApp Image 2025-07-31 at 16.26.49_059e39cb.jpg" alt="Developer" class="rounded-full w-24 h-24 mx-auto mb-2 border-4 border-violet-600" />
+          <p class="text-lg font-semibold">Aryan</p>
+          <p class="text-xs text-gray-500">Founder</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
+      <h2 class="text-2xl font-bold mb-6 text-center text-violet-700">⭐ What Our Clients Say</h2>
+      <div class="space-y-4">
+        <blockquote class="border-l-4 border-violet-400 pl-4 italic text-gray-600">“LeviSMM boosted my Instagram in just 2 days! Love it!” – <strong>Aman S.</strong></blockquote>
+        <blockquote class="border-l-4 border-violet-400 pl-4 italic text-gray-600">“Best panel I’ve used so far, affordable and fast.” – <strong>Priya M.</strong></blockquote>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-2xl p-6 text-center shadow-lg">
+      <h2 class="text-3xl font-bold mb-2">Ready to grow your social media?</h2>
+      <p class="mb-4">Join thousands who trust LeviSMM to boost their online presence.</p>
+      <a href="#orderForm" class="inline-block bg-white text-violet-700 px-6 py-2 rounded-md font-semibold shadow-md hover:bg-gray-100 transition">Get Started</a>
+    </section>
+
   </main>
 
-  <!-- Scripts -->
   <script>
-    // Load Services
-    window.onload = function () {
-      const serviceDropdown = document.getElementById("service");
-      const services = JSON.parse(localStorage.getItem("services")) || [];
-      if (services.length > 0) {
-        serviceDropdown.innerHTML = "";
-        services.forEach(service => {
-          const option = document.createElement("option");
-          option.value = service.name;
-          option.textContent = `${service.name} - ₹${service.price}/1k`;
-          serviceDropdown.appendChild(option);
-        });
-      } else {
-        serviceDropdown.innerHTML = "<option>No services available</option>";
-      }
-      renderUserOrders();
-    };
-
-    // Place Order
-    document.getElementById("orderForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      let orders = JSON.parse(localStorage.getItem("orders")) || [];
-      const newOrder = {
-        id: Date.now(),
-        service: document.getElementById("service").value,
-        link: document.getElementById("link").value,
-        quantity: document.getElementById("quantity").value,
-        status: "Pending"
-      };
-      orders.push(newOrder);
-      localStorage.setItem("orders", JSON.stringify(orders));
-      alert("Order Placed Successfully!");
-      renderUserOrders();
-    });
-
-    // Render Orders
-    function renderUserOrders() {
-      const orders = JSON.parse(localStorage.getItem("orders")) || [];
-      const ordersList = document.getElementById("ordersList");
-      ordersList.innerHTML = "";
-      if (orders.length === 0) {
-        ordersList.innerHTML = `<tr><td colspan="5" class="text-center py-2">No orders found</td></tr>`;
-        return;
-      }
-      orders.forEach((order) => {
-        ordersList.innerHTML += `
-          <tr>
-            <td class="border px-3 py-2">${order.id}</td>
-            <td class="border px-3 py-2">${order.service}</td>
-            <td class="border px-3 py-2">${order.quantity}</td>
-            <td class="border px-3 py-2 font-bold ${getStatusColor(order.status)}">${order.status}</td>
-            <td class="border px-3 py-2">
-              ${order.status === "Completed"
-                ? `<button onclick="requestRefill(${order.id})" class="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700 text-xs">Refill</button>`
-                : `<span class="text-gray-400">N/A</span>`}
-            </td>
-          </tr>`;
-      });
-    }
-
-    // Status Color
-    function getStatusColor(status) {
-      if (status === "Pending") return "text-yellow-600";
-      if (status === "Processing") return "text-blue-600";
-      if (status === "Completed") return "text-green-600";
-      if (status === "Canceled") return "text-red-600";
-      return "text-gray-600";
-    }
-
-    // Refill Request
-    function requestRefill(orderId) {
-      let refills = JSON.parse(localStorage.getItem("refills")) || [];
-      refills.push({ id: Date.now(), orderId: orderId, status: "Pending" });
-      localStorage.setItem("refills", JSON.stringify(refills));
-      alert(`Refill request submitted for Order ID: ${orderId}`);
-    }
-
-    // Payment Submission
-    function submitPayment() {
-      const amount = document.getElementById("amount").value;
-      const paymentMessage = document.getElementById("paymentMessage");
-      if (!amount || amount <= 0) {
-        paymentMessage.textContent = "⚠ Please enter a valid amount.";
-        paymentMessage.className = "mt-4 text-center text-red-600";
-        paymentMessage.classList.remove("hidden");
-        return;
-      }
-      let payments = JSON.parse(localStorage.getItem("payments")) || [];
-      payments.push({ id: Date.now(), amount, status: "Pending" });
-      localStorage.setItem("payments", JSON.stringify(payments));
-      paymentMessage.textContent = `✅ Payment request submitted for ₹${amount}`;
-      paymentMessage.className = "mt-4 text-center text-green-600";
-      paymentMessage.classList.remove("hidden");
-      document.getElementById("amount").value = "";
-    }
+    // JavaScript placeholder
   </script>
+
 </body>
 </html>
