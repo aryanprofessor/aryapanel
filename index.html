@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,132 +6,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LeviSMM Panel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    body { font-family: 'Poppins', sans-serif; }
+    .fade-in { animation: fadeIn 1.2s ease-in-out both; }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+      transform: scale(1.02);
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800">
+<body class="bg-gradient-to-br from-gray-100 to-white text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-violet-800 text-white py-8 px-4 text-center shadow-lg">
-    <h1 class="text-4xl font-bold tracking-wide">LeviSMM Panel</h1>
-    <p class="text-md mt-2 opacity-90">Fast, reliable, and affordable SMM services</p>
-    <a href="admin.html" class="text-yellow-300 underline mt-3 inline-block hover:text-yellow-200 transition">Admin Login</a>
-  </header>
+  <!-- Navbar -->
+  <nav class="bg-violet-700 text-white px-6 py-4 flex items-center justify-between shadow-md fade-in">
+    <h1 class="text-xl font-bold tracking-wide">LeviSMM Panel</h1>
+    <div class="relative">
+      <button id="menuButton" class="focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <div id="dropdownMenu" class="absolute right-0 mt-2 w-52 bg-white text-gray-800 border border-gray-200 rounded-lg shadow-lg hidden z-10">
+        <a href="add-funds.html" class="block px-4 py-2 hover:bg-gray-100">Add Funds</a>
+        <span class="block px-4 py-2 text-gray-400 cursor-not-allowed">Fund History</span>
+        <span class="block px-4 py-2 text-gray-400 cursor-not-allowed">Log Out</span>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Welcome Section -->
-  <section class="max-w-4xl mx-auto mt-8 text-center px-4">
-    <p class="text-xl text-gray-700">Welcome to <strong class="text-violet-700">LeviSMM Panel</strong> – your one-stop platform for boosting your social media presence.</p>
+  <!-- Hero Section -->
+  <section class="text-center py-8 px-4 fade-in">
+    <h2 class="text-3xl font-bold text-violet-700">Welcome to LeviSMM</h2>
+    <p class="text-gray-600 mt-2">Your one-stop platform for boosting your social media presence.</p>
+    <a href="admin.html" class="text-sm text-yellow-500 underline mt-2 inline-block hover:text-yellow-400 transition">Admin Login</a>
   </section>
 
-  <main class="max-w-4xl mx-auto mt-10 px-4 space-y-12">
+  <main class="max-w-5xl mx-auto px-4 space-y-12">
 
-    <!-- Wallet Balance -->
-    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
-      <h2 class="text-3xl font-semibold mb-4 text-center text-violet-700">💼 Wallet Balance</h2>
-      <div class="text-center text-4xl font-bold text-green-600" id="walletBalance">₹0</div>
+    <!-- Stats Section -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 fade-in">
+      <div class="bg-white shadow-xl rounded-2xl p-6 border-t-4 border-green-500 text-center glow-card transition-transform">
+        <h3 class="text-lg font-semibold text-gray-700">Wallet Balance</h3>
+        <p class="text-2xl font-bold text-green-600">₹0</p>
+      </div>
+      <div class="bg-white shadow-xl rounded-2xl p-6 border-t-4 border-blue-500 text-center glow-card transition-transform">
+        <h3 class="text-lg font-semibold text-gray-700">Total Orders</h3>
+        <p class="text-2xl font-bold text-blue-600">0</p>
+      </div>
+      <div class="bg-white shadow-xl rounded-2xl p-6 border-t-4 border-yellow-500 text-center glow-card transition-transform">
+        <h3 class="text-lg font-semibold text-gray-700">Total Spending</h3>
+        <p class="text-2xl font-bold text-yellow-600">₹0</p>
+      </div>
     </section>
 
-    <!-- Order New Service -->
-    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
-      <h2 class="text-3xl font-semibold mb-4 text-center text-violet-700">📦 Order New Service</h2>
-      <form id="orderForm" class="space-y-5">
-        <div>
-          <label for="service" class="block text-sm font-medium">Select Service</label>
-          <select id="service" name="service" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
-            <option>Loading services...</option>
-          </select>
-        </div>
-        <div>
-          <label for="link" class="block text-sm font-medium">Link</label>
-          <input type="text" id="link" name="link" placeholder="Enter post/profile link" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500" required />
-        </div>
-        <div>
-          <label for="quantity" class="block text-sm font-medium">Quantity</label>
-          <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500" required />
-        </div>
-        <button type="submit" class="w-full bg-violet-600 text-white py-2 rounded-md hover:bg-violet-700 transition">Place Order</button>
+    <!-- Order Form -->
+    <section class="bg-white shadow-xl rounded-2xl p-8 border-t-4 border-indigo-600 fade-in">
+      <h2 class="text-2xl font-bold text-center text-violet-700 mb-6">📦 Order a Service</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Enter service link" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        <input type="number" placeholder="Quantity" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+          <option selected disabled>Select Service</option>
+          <option>Instagram Followers</option>
+          <option>Youtube Views</option>
+          <option>Twitter Likes</option>
+          <option>Facebook Comments</option>
+          <option>LinkedIn Shares</option>
+        </select>
+        <button type="submit" class="w-full bg-violet-600 text-white py-3 rounded-lg font-semibold hover:bg-violet-700 transition">Place Order</button>
       </form>
-      <div id="orderResponse" class="mt-4 text-center text-sm font-medium hidden"></div>
     </section>
 
-    <!-- Add Funds -->
-    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
-      <h2 class="text-3xl font-semibold mb-4 text-center text-violet-700">💰 Add Funds</h2>
-      <div class="text-center mb-5">
-        <div class="inline-block bg-gray-50 p-2 rounded-md shadow">
-          <img src="c:\Users\ar614\OneDrive\Documents\pay.jpg" alt="Scan QR to Pay" class="w-40 h-40 mx-auto rounded border border-gray-300" />
+    <!-- Popular Packages -->
+    <section class="bg-white shadow-xl rounded-2xl p-8 border-t-4 border-purple-500 fade-in">
+      <h2 class="text-2xl font-bold text-center text-violet-700 mb-6">🔥 Popular Packages</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-violet-50 p-4 rounded-lg text-center glow-card transition-transform">
+          <h3 class="font-semibold text-lg">Insta Growth</h3>
+          <p class="text-sm text-gray-500">1000 Followers – ₹299</p>
         </div>
-        <p class="c:\Users\ar614\OneDrive\Documents\pay.jpg">Scan this QR code to send payment</p>
-      </div>
-      <div>
-        <label for="amount" class="block text-sm font-semibold">Enter Amount (₹)</label>
-        <input type="number" id="amount" name="amount" class="mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-violet-400" placeholder="e.g. 500" required />
-      </div>
-      <button onclick="submitPayment()" class="mt-4 w-full bg-gradient-to-r from-violet-600 to-violet-800 text-white py-2 rounded-md font-semibold hover:shadow-lg">Submit Payment</button>
-      <p id="paymentMessage" class="mt-4 text-center text-sm font-medium hidden"></p>
-    </section>
-
-    <!-- My Orders -->
-    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
-      <h2 class="text-2xl font-bold mb-4 text-center text-violet-700">📋 My Orders</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border border-gray-300">
-          <thead class="bg-gray-100">
-            <tr>
-              <th class="border px-3 py-2">Order ID</th>
-              <th class="border px-3 py-2">Service</th>
-              <th class="border px-3 py-2">Quantity</th>
-              <th class="border px-3 py-2">Status</th>
-              <th class="border px-3 py-2">Refill</th>
-            </tr>
-          </thead>
-          <tbody id="ordersList"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Meet the Team -->
-    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
-      <h2 class="text-2xl font-bold mb-6 text-center text-violet-700">👥 Meet the Team</h2>
-      <div class="flex flex-wrap gap-8 justify-center">
-        <div class="w-40 text-center">
-          <img src="c:\Users\ar614\OneDrive\Documents\WhatsApp Image 2025-07-31 at 16.27.01_c60e39ea.jpg" alt="Founder" class="rounded-full w-24 h-24 mx-auto mb-2 border-4 border-violet-600" />
-          <p class="text-lg font-semibold">ravindra</p>
-          <p class="text-xs text-gray-500">Co Founder</p>
+        <div class="bg-violet-50 p-4 rounded-lg text-center glow-card transition-transform">
+          <h3 class="font-semibold text-lg">YT Booster</h3>
+          <p class="text-sm text-gray-500">5000 Views – ₹499</p>
         </div>
-        <div class="w-40 text-center">
-          <img src="c:\Users\ar614\OneDrive\Documents\WhatsApp Image 2025-07-31 at 16.26.49_059e39cb.jpg" alt="Developer" class="rounded-full w-24 h-24 mx-auto mb-2 border-4 border-violet-600" />
-          <p class="text-lg font-semibold">Aryan</p>
-          <p class="text-xs text-gray-500">Founder</p>
+        <div class="bg-violet-50 p-4 rounded-lg text-center glow-card transition-transform">
+          <h3 class="font-semibold text-lg">Twitter Power</h3>
+          <p class="text-sm text-gray-500">500 Likes – ₹199</p>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
-      <h2 class="text-2xl font-bold mb-6 text-center text-violet-700">⭐ What Our Clients Say</h2>
-      <div class="space-y-4">
-        <blockquote class="border-l-4 border-violet-400 pl-4 italic text-gray-600">“LeviSMM boosted my Instagram in just 2 days! Love it!” – <strong>Aman S.</strong></blockquote>
-        <blockquote class="border-l-4 border-violet-400 pl-4 italic text-gray-600">“Best panel I’ve used so far, affordable and fast.” – <strong>Priya M.</strong></blockquote>
+    <!-- Founders Section -->
+    <section class="bg-white shadow-xl rounded-2xl p-6 border-t-4 border-gray-300 text-center fade-in">
+      <h2 class="text-xl font-bold text-gray-800 mb-6">👑 Founders</h2>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div>
+          <img src="https://via.placeholder.com/100" alt="Aryan" class="mx-auto rounded-full border shadow mb-2">
+          <p class="font-semibold">Aryan</p>
+          <a href="https://instagram.com/aryan" class="text-sm text-blue-500 hover:underline" target="_blank">@aryan</a>
+        </div>
+        <div>
+          <img src="https://via.placeholder.com/100" alt="Rohit" class="mx-auto rounded-full border shadow mb-2">
+          <p class="font-semibold">Rohit</p>
+          <a href="https://instagram.com/rohit" class="text-sm text-blue-500 hover:underline" target="_blank">@rohit</a>
+        </div>
       </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-2xl p-6 text-center shadow-lg">
-      <h2 class="text-3xl font-bold mb-2">Ready to grow your social media?</h2>
-      <p class="mb-4">Join thousands who trust LeviSMM to boost their online presence.</p>
-      <a href="#orderForm" class="inline-block bg-white text-violet-700 px-6 py-2 rounded-md font-semibold shadow-md hover:bg-gray-100 transition">Get Started</a>
     </section>
 
   </main>
 
   <script>
-    // JavaScript placeholder
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuButton.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('hidden');
+    });
   </script>
 
 </body>
 </html>
+
