@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - LeviSMM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-violet-700 text-white p-4 text-center shadow">
+    <h1 class="text-2xl font-bold">Admin Panel - LeviSMM</h1>
+    <p class="text-sm">Manage services, orders, payments & refills</p>
+  </header>
+
+  <!-- Tab Buttons -->
+  <div class="flex justify-center space-x-3 mt-6">
+    <button onclick="showTab('services')" class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700">Services</button>
+    <button onclick="showTab('orders')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Orders</button>
+    <button onclick="showTab('payments')" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Payments</button>
+    <button onclick="showTab('refills')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Refills</button>
+  </div>
+
+  <!-- Tabs Content -->
+  <main class="max-w-5xl mx-auto p-6 mt-6 space-y-8">
+
+    <!-- Services Tab -->
+    <div id="servicesTab" class="tab bg-white p-5 shadow-lg rounded-lg">
+      <h2 class="text-xl font-bold mb-4 text-violet-700">Manage Services</h2>
+      <table class="w-full border-collapse border border-gray-300 text-sm">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-3 py-2">Service Name</th>
+            <th class="border border-gray-300 px-3 py-2">Price (₹)</th>
+            <th class="border border-gray-300 px-3 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="servicesTable"></tbody>
+      </table>
+      <button onclick="addService()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">+ Add Service</button>
+    </div>
+
+    <!-- Orders Tab -->
+    <div id="ordersTab" class="tab bg-white p-5 shadow-lg rounded-lg hidden">
+      <h2 class="text-xl font-bold mb-4 text-green-700">Manage Orders</h2>
+      <table class="w-full border-collapse border border-gray-300 text-sm">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-3 py-2">Order ID</th>
+            <th class="border border-gray-300 px-3 py-2">Service</th>
+            <th class="border border-gray-300 px-3 py-2">Link</th>
+            <th class="border border-gray-300 px-3 py-2">Quantity</th>
+            <th class="border border-gray-300 px-3 py-2">Status</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTable"></tbody>
+      </table>
+    </div>
+
+    <!-- Payments Tab -->
+    <div id="paymentsTab" class="tab bg-white p-5 shadow-lg rounded-lg hidden">
+      <h2 class="text-xl font-bold mb-4 text-yellow-700">User Payment Requests</h2>
+      <table class="w-full border-collapse border border-gray-300 text-sm">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-3 py-2">Payment ID</th>
+            <th class="border border-gray-300 px-3 py-2">Amount (₹)</th>
+            <th class="border border-gray-300 px-3 py-2">Status</th>
+            <th class="border border-gray-300 px-3 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody id="paymentsTable"></tbody>
+      </table>
+    </div>
+
+    <!-- Refills Tab -->
+    <div id="refillsTab" class="tab bg-white p-5 shadow-lg rounded-lg hidden">
+      <h2 class="text-xl font-bold mb-4 text-blue-700">Refill Requests</h2>
+      <table class="w-full border-collapse border border-gray-300 text-sm">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-3 py-2">Refill ID</th>
+            <th class="border border-gray-300 px-3 py-2">Order ID</th>
+            <th class="border border-gray-300 px-3 py-2">Status</th>
+            <th class="border border-gray-300 px-3 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody id="refillList"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- JS Section -->
+  <script>
+    // Dummy data
+    let services = JSON.parse(localStorage.getItem("services")) || [
+      { name: "Instagram Followers", price: 100 },
+      { name: "YouTube Views", price: 50 }
+    ];
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    let payments = JSON.parse(localStorage.getItem("payments")) || [];
+    let refills = JSON.parse(localStorage.getItem("refills")) || [];
+
+    // Render Services
+    function renderServices() {
+      const table = document.getElementById("servicesTable");
+      table.innerHTML = "";
+      services.forEach((service, index) => {
+        table.innerHTML += `
+          <tr>
+            <td class="border px-3 py-2">${service.name}</td>
+            <td class="border px-3 py-2">₹${service.price}</td>
+            <td class="border px-3 py-2">
+              <button onclick="deleteService(${index})" class="bg-red-500 text-white px-2 py-1 text-xs rounded hover:bg-red-600">Delete</button>
+            </td>
+          </tr>`;
+      });
+    }
+
+    function addService() {
+      const name = prompt("Enter service name:");
+      const price = prompt("Enter service price:");
+      if (name && price) {
+        services.push({ name, price: parseFloat(price) });
+        localStorage.setItem("services", JSON.stringify(services));
+        renderServices();
+      }
+    }
+
+    function deleteService(index) {
+      services.splice(index, 1);
+      localStorage.setItem("services", JSON.stringify(services));
+      renderServices();
+    }
+
+    // Render Orders
+    function renderOrders() {
+      const table = document.getElementById("ordersTable");
+      table.innerHTML = "";
+      if (orders.length === 0) {
+        table.innerHTML = `<tr><td colspan="5" class="text-center py-2">No orders found</td></tr>`;
+        return;
+      }
+      orders.forEach(order => {
+        table.innerHTML += `
+          <tr>
+            <td class="border px-3 py-2">${order.id}</td>
+            <td class="border px-3 py-2">${order.service}</td>
+            <td class="border px-3 py-2">${order.link}</td>
+            <td class="border px-3 py-2">${order.quantity}</td>
+            <td class="border px-3 py-2">${order.status}</td>
+          </tr>`;
+      });
+    }
+
+    // Render Payments
+    function renderPayments() {
+      const table = document.getElementById("paymentsTable");
+      table.innerHTML = "";
+      if (payments.length === 0) {
+        table.innerHTML = `<tr><td colspan="4" class="text-center py-2">No payments found</td></tr>`;
+        return;
+      }
+      payments.forEach((payment, index) => {
+        table.innerHTML += `
+          <tr>
+            <td class="border px-3 py-2">${payment.id}</td>
+            <td class="border px-3 py-2">₹${payment.amount}</td>
+            <td class="border px-3 py-2">${payment.status}</td>
+            <td class="border px-3 py-2">
+              ${
+                payment.status === "Pending"
+                  ? `<button onclick="updatePaymentStatus(${index}, 'Approved')" class="bg-green-600 text-white px-2 py-1 text-xs rounded hover:bg-green-700">Approve</button>
+                     <button onclick="updatePaymentStatus(${index}, 'Rejected')" class="bg-red-600 text-white px-2 py-1 text-xs rounded hover:bg-red-700">Reject</button>`
+                  : `<span class="text-gray-500">Processed</span>`
+              }
+            </td>
+          </tr>`;
+      });
+    }
+
+    function updatePaymentStatus(index, status) {
+      payments[index].status = status;
+      localStorage.setItem("payments", JSON.stringify(payments));
+      renderPayments();
+    }
+
+    // Render Refills
+    function renderRefills() {
+      const refillList = document.getElementById("refillList");
+      refillList.innerHTML = "";
+      if (refills.length === 0) {
+        refillList.innerHTML = `<tr><td colspan="4" class="text-center py-2">No refill requests found</td></tr>`;
+        return;
+      }
+      refills.forEach((refill) => {
+        refillList.innerHTML += `
+          <tr>
+            <td class="border px-3 py-2">${refill.id}</td>
+            <td class="border px-3 py-2">${refill.orderId}</td>
+            <td class="border px-3 py-2">${refill.status}</td>
+            <td class="border px-3 py-2">
+              ${
+                refill.status === "Pending"
+                  ? `<button onclick="updateRefillStatus(${refill.id}, 'Approved')" class="bg-green-600 text-white px-2 py-1 text-xs rounded hover:bg-green-700">Approve</button>
+                     <button onclick="updateRefillStatus(${refill.id}, 'Rejected')" class="bg-red-600 text-white px-2 py-1 text-xs rounded hover:bg-red-700 ml-2">Reject</button>`
+                  : `<span class="text-gray-500">No Action</span>`
+              }
+            </td>
+          </tr>`;
+      });
+    }
+
+    function updateRefillStatus(refillId, newStatus) {
+      refills = refills.map(refill =>
+        refill.id === refillId ? { ...refill, status: newStatus } : refill
+      );
+      localStorage.setItem("refills", JSON.stringify(refills));
+      renderRefills();
+    }
+
+    // Show Tabs
+    function showTab(tab) {
+      document.getElementById("servicesTab").classList.add("hidden");
+      document.getElementById("ordersTab").classList.add("hidden");
+      document.getElementById("paymentsTab").classList.add("hidden");
+      document.getElementById("refillsTab").classList.add("hidden");
+
+      if (tab === "services") renderServices();
+      if (tab === "orders") renderOrders();
+      if (tab === "payments") renderPayments();
+      if (tab === "refills") renderRefills();
+
+      document.getElementById(tab + "Tab").classList.remove("hidden");
+    }
+
+    // Load Default Tab
+    window.onload = () => {
+      renderServices();
+    };
+  </script>
+</body>
+</html>
+
